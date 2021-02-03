@@ -1,13 +1,9 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BruhChatt</title>
+  <title>Brủh Chat</title>
 </head>
 <body><!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
@@ -35,15 +31,21 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   
-    var myName = prompt("Enter your name");
+    var myName = prompt("Nhập tên:");
+    var check = false;
   
     function sendMessage() {
         var message = document.getElementById("message").value;
-        //save in database
-        firebase.database().ref("message").push().set({
-            "sender": myName,
-            "message": message,
-        })
+        if(message==="Bruh" || message==="bruh" || message==="Brủh" || message==="brủh" || message==="Bủh" || message==="bủh") {check=true;} 
+        
+        if (check) {
+          firebase.database().ref("message").push().set({
+              "sender": myName,
+              "message": message,
+          })
+        } else {
+          alert("Brủh trước đã");
+        }
         return false;
     }
   
@@ -58,10 +60,10 @@
     });
   
   </script>
-  
+
   <form onsubmit="return sendMessage();">
-    <input id="message" placeholder="Enter message" autocomplete="off">
-    <input type="submit">
+    <input id="message" placeholder="Nhập tin nhắn..." autocomplete="off">
+    <input type="submit" value="Gửi">
   </form>
   
   <ul id="messages"></ul>
