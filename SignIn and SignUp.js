@@ -56,6 +56,7 @@ function Login(){
  
      var errorCode=error.code;
      var errorMsg=error.message;
+     window.alert("Sai mật khẩu hoặc tài khoản không tồn tại");
     });
     return false;
 }
