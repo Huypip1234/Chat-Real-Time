@@ -25,16 +25,20 @@ document.getElementById("name").value = name;
 
 function sendMessage() {
     var sender = document.getElementById("name").value;
-    var message = document.getElementById("message").value;
-    if(message==="Bruh" || message==="bruh" || message==="Brủh" || message==="brủh" || message==="Bủh" || message==="bủh") {check=true;} 
-    
-    if (check) {
-      firebase.database().ref("message").push().set({
-          "sender": sender,
-          "message": message,
-      })
+    if(sender===null || sender===undefined) {
+      alert("Phải đăng nhập đã!");
     } else {
-      alert("Brủh trước đã");
+      var message = document.getElementById("message").value;
+      if(message==="Bruh" || message==="bruh" || message==="Brủh" || message==="brủh" || message==="Bủh" || message==="bủh") {check=true;} 
+      
+      if (check) {
+        firebase.database().ref("message").push().set({
+            "sender": sender,
+            "message": message,
+        })
+      } else {
+        alert("Brủh trước đã");
+      }
     }
     return false;
 }
