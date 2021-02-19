@@ -1,11 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrủhChat 2.0</title>
+    <title>Brủh Chat (BRỦH)</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="shortcut icon" type="images/bruh.png" href="images/bruh.png" />
 </head>
+
 <body>
-    <a href="SignIn and SignUp.html"><button>Bắt Đầu Ngay!</button></a>
+    <header id="login-form">
+        <div class="container-form" id="container">
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Tạo một tài khoản Google</h1><br><br>
+                    <a class="button_link" target="blank"
+                        href="https://accounts.google.com/SignUp?continue=https://myaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button">Nhấn
+                        vào đây!</a>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Đăng nhập 1 chạm</h1>
+                    <i class="fas fa-arrow-down fa-3x"></i>
+                    <div class="social-container">
+                        <a onclick="loginGoogle()" href="#" class="social"><i
+                                class="fab fa-google-plus-g fa-3x"></i></a>
+                    </div>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>BỦH BỦH LMAO</h1>
+                        <p>Nếu đã tạo tài khoản thành công thì nhấn vào đây!</p>
+                        <button class="ghost" id="signIn">Đăng nhập</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>BRỦH CHAT</h1>
+                        <p>Bấm vào đây để đăng kí nếu chưa có tài khoản</p>
+                        <button class="ghost" id="signUp">Đăng kí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="top-background" id="top-background"></div>
+    <main id="chat-room" style="display: none">
+
+        <div class="popUp-father" onclick="popupClose()" id="popUp-father" style="display: none">
+            <div id="textpopUp" class="textpopUp"></div>
+            <div class="popUp-background"></div>
+        </div>
+          
+        </div>
+        <div class="container" id="container-chat">
+            <div class="left" id="left">
+                <div class="top-left">
+                    <div class="myInfor">
+                        <img id="imgProfile" src="images/pp.png" alt="khong nhan duoc anh">
+                        <h3 id="myname" class="myname"></h3>
+                    </div>
+                    <div onclick="logout()" class="logout logout_outSide">Đăng xuất</div>
+                </div>
+                <div class="search-form">
+                    <label for="searchBar"><i class="fa fa-search search-form_icon"></i></label>
+                    <input type="text" onkeyup="alert('Tính năng này chưa được hoàn thiện ahuhu')" id="searchBar"
+                        placeholder="Tìm Brủh" class="search-form_input" />
+                </div>
+                <div class="list-bruh-div">
+                    <ul class="list-bruh" id="list-bruh">
+                    </ul>
+                </div>
+            </div>
+            <div class="right" id="right" style="display: none">
+                <div class="top-right">
+                    <div class="top-right-Infor">
+                        <a onclick="backListFriend()" href="#">
+                            <i class="fas fa-arrow-left fa-2x back-icon"></i>
+                        </a>
+                        <img class="imgtop-right" id="divImgChat" src="images/pp.png" alt="lol">
+                        <h2 id="divChatName"></h2>
+                    </div>
+                    <div onclick="logout()" class="logout">Đăng xuất</div>
+                </div>
+                <div class="body-right" id="body-right">
+                </div>
+                <div class="footer-right">
+                    <input class="footer-right-form" onkeydown="CheckpressEnter(event)" placeholder="Chat..."
+                        id="txtMessage" type="text" />
+                    <i onclick="sendMessage()" class="fa fa-paper-plane fa-2x"></i>
+                </div>
+            </div>
+            <div class="start-screen" id="start-screen">
+                <img src="images/bruh.png" alt="Lỗi load ảnh rồi ahuhu">
+                <h1>Brủh Chat</h1>
+            </div>
+        </div>
+    </main>
+    <script>
+	
+        // Popup Open
+            
+        function popupOpen(textpopUp) {          
+            document.getElementById("popUp-father").style.display = "flex";           
+            document.getElementById("textpopUp").innerHTML = textpopUp;
+        }
+            
+        // Popup Close
+            
+        function popupClose() {       
+            document.getElementById("popUp-father").style.display = "none";
+        }
+            
+        </script>
+    <script src="jquery-3.4.1.min.js"></script> 
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script> 
+    <script src="firebase-messaging.js"></script>
+    <script src="firebase-init.js"></script>
+    <script src="loginform.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
